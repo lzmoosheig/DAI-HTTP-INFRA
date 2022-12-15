@@ -18,6 +18,19 @@ Everything you need is located in the folder *docker-images*.
 
 The first thing you have to do is to build the image using our prepared Dockerfile.
 
+#### Dockerfile configuration
+Here is our Dockerfile
+```
+FROM php:7.2-apache
+COPY content/ /var/www/html/
+```
+The first line is used to import the correct image.
+The second line is used to copy everything from the *content* folder to the */var/www/html* folder.
+
+The directory */var/www/html* is the default root folder of the web server. Every html, css files need to be stored at this location. 
+The *content* folder contains our web template (see [Web template](#web-template))
+
+#### Build and Run
 In a terminal run the following commands in the *docker-images* folder:
 
 ```
