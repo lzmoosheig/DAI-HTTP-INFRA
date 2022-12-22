@@ -6,6 +6,26 @@ HTTP Infrastructure course project
 
 - Have docker installed (https://docs.docker.com/get-docker/)
 
+## Running both servers
+
+### Docker compose
+
+You can directly run both servers (static/dynamic) by using Docker compose.
+
+### Prerequisite
+
+- Install Docker compose following this tutorial: https://docs.docker.com/compose/install/
+
+### Run servers
+Open a terminal and run the following commands :
+```
+cd *Your-folder-location*/docker-images/composetest
+sudo docker compose up
+```
+
+Now both servers will be running !
+
+
 ## Static Apache HTTP Server
 
 ### Running the server
