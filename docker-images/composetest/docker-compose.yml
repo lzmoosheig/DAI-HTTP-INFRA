@@ -1,0 +1,17 @@
+version: '3.9'
+services:
+  static-http:
+    container_name: apache-php-image
+    image: dai/apache_php
+    ports:
+      - "9090:80"
+    restart: unless-stopped
+ 
+  dynamic-http:
+    container_name: express-image
+    image: dai/express_passwords
+    ports:
+      - "7777:7777"
+    restart: unless-stopped
+
+  
