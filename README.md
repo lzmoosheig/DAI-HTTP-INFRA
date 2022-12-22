@@ -1,66 +1,104 @@
 # DAI-HTTP-INFRA
-Labo de DAI sur l'HTTP
 
-# Static HTTP Server
+HTTP Infrastructure course project
 
-In this part, we'll see how to setup a static HTTP server on our machine.
-
-## Prerequisite
+## Prerequisite of the entire project
 
 - Have docker installed (https://docs.docker.com/get-docker/)
-- Pull PHP & HTTPD images from the Dockerhub
-([PHP](https://hub.docker.com/_/php/) & [HTTPD](https://hub.docker.com/_/httpd))
 
-## Configuration
+## Static Apache HTTP Server
 
-### Docker
-Everything you need is located in the folder *docker-images*.
+### Running the server
 
-The first thing you have to do is to build the image using our prepared Dockerfile.
-
-In a terminal run the following commands in the *docker-images* folder:
-
+Open a terminal and run the following commands :
 ```
+cd *Your-folder-location*/docker-images/apache-php-image
 docker build -t dai/apache_php .
-docker run -p 9090:80 dai/apache_php
+docker run -p *port*:80 dai/apache_php
 ```
+
 You should see something like this:
 ![](https://i.imgur.com/QVezukO.png)
 
-In this case, we'll use the port 9090 to access the web interface.
-
-You can choose another open port if you need to.
-
-Now you should have a running container using the php image.
-
-You can check with the following command:
+You should now have a running dai/apache_php container, you can check with the following command:
 ```
 docker ps
 ```
-### Apache
-Apache configurations are located in */etc/apache2/*.
 
-For example, in /etc/apache2/sites-availables:
+You can then access your page via localhost:*port* on any web client.
 
-You can see all virtual hosts, for the moment there is only one and we can check the configuration by running the following command:
+### Apache Configuration
+
+To access our apache configuration we need to access a bash inside our running container.
+
+To do that, run the following command in a new terminal :
 ```
-more 000-default.conf
+docker ps
 ```
-At this point, we'll use the native configuration of Apache.
 
-### Web template
+This command lists the current running containers, find the name of your dai/apache_php container and use it in the following commands :
+```
+docker exec -it *found-name* /bin/bash
+cd /etc/apache2
+```
 
-For this project we're using this [template](https://startbootstrap.com/template/full-width-pics)
+You can access all of Apache's configuration there.
 
-Everything is located in *docker-images\content*.
+Learn more here : [Apache Documentation](https://httpd.apache.org/docs/)
 
-### Web interface
+### Web page Configuration
 
-Now that everything has been setted up, you can access to our Web interface using any browser then localhost:9090
+Currently, the following template is used : [template](https://startbootstrap.com/template/full-width-pics)
 
-You should see something like this:
-![](https://i.imgur.com/AZ7sJfH.png)
+Everything is located in *docker-images\content*, you just need to replace or change files in there to modifiy your web page.
 
-## Useful links
+## Dynamic Express.js Server
 
-[Apache Documentation](https://httpd.apache.org/docs/)
+### Prerequisite
+
+- To test the server, you need telnet installed.
+- You also need node.js and npm to install the node_modules required to run the application.
+
+### Setup node packages
+
+Open a terminal and run the following commands :
+```
+cd *Your-folder-location*/docker-images/express-image/src
+npm install --save chance
+npm install --save express
+```
+
+Those commands are used to install the packages you need to run the current index.js file.
+
+### Running the Server
+
+Open a terminal and run the following commands :
+```
+cd *Your-folder-location*/docker-images/express-image
+docker build -t dai/express_passwords .
+docker run -p *port*:7777 dai/express_passwords
+```
+
+Your server should be running the application.
+
+### Test your application
+
+You can test the application with following commands which connects you to the application and requests data :
+```
+telnet localhost *port*
+GET / HTTP/1.0
+
+```
+
+Be sure to press \<enter\> one more time after the *GET / HTTP/1.0* to send the request.
+
+### How to modify the application
+
+The application is located in the /docker-images/express-image/src folder.
+
+You can modify :
+
+- The package in the *package.json* file.
+- The application in the *index.js* file.
+
+You can add packages using *npm*.
