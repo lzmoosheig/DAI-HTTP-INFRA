@@ -1,0 +1,33 @@
+mapping du port 9090 sur le port 80
+
+
+
+docker inspect nomDuContainer pour récupérer l'adresse IP
+
+
+Pour accéder au dossier HTML
+
+docker exec -it funny_brown /bin/bash
+
+
+DocumentRoot => de base c'est /var/www/html
+
+setup dans /var/www/html:
+
+echo "test" > index.html
+
+dans /etc/apache2:
+
+C'est dans ce dossier que se trouve les multiples configuration
+
+dans /etc/apache2/sites-availables:
+
+Nous pouvons voir tout les virtuals hosts, pour l'instant il y en a seulement un et pour checker sa config on peut faire un 
+more 000-default.conf
+
+docker build -t dai/apache_php .
+
+docker run -p 9090:80 dai/apache_php
+
+Si l'on souhaite mapper sur un autre port
+docker run -p 9091:80 dai/apache_php
