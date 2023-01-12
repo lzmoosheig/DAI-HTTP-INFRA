@@ -1,17 +1,38 @@
-version: '3.9'
-services:
-  static-http:
-    container_name: apache-php-image
-    image: dai/apache_php
-    ports:
-      - "9090:80"
-    restart: unless-stopped
- 
-  dynamic-http:
-    container_name: express-image
-    image: dai/express_passwords
-    ports:
-      - "7777:7777"
-    restart: unless-stopped
+version: "3"
 
+services:
+  static:
+    image: dai/apache_php
+    restart: unless-stopped
+    ports:
+      - 80
+      
+    labels:
+      - "traefik.http.routers.apache_php.rule=Host(`localhost`)"
+
+    deploy:
+      replicas: 3
+
+    
+  dynamic:
+    image: dai/express_passwords
+    restart: unless-stopped
+    ports:
+      - 7777
+      
+    labels:
+    
+     - traefik.http.routers.express_passwords.rule=PathPrefix(`/api`)
+     - traefik.http.routers.express_passwords.middlewares=admin-stripprefix
+     - traefik.http.middlewares.admin-stripprefix.stripprefix.prefixes=/api
   
+  traefik:
+    image: "traefik:v2.9"
+    container_name: "traefik"
+    command: --api.insecure=true --providers.docker
+
+    ports:
+      - "80:80"
+      - "8181:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
