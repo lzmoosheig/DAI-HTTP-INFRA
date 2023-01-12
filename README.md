@@ -122,3 +122,29 @@ You can modify :
 - The application in the *index.js* file.
 
 You can add packages using *npm*.
+
+### Traefik & Docker Compose
+
+### Prerequisite
+
+Firstly, you'll need Docker Compose: https://docs.docker.com/compose/install/
+
+	- To install on Linux: https://docs.docker.com/compose/install/linux/#install-the-plugin-manually
+
+If you need to modify the docker-compose.yml file:
+https://docs.docker.com/compose/features-uses/
+
+### Docker compose
+Everything is included in the 'compose' folder.
+
+You only need to run this following command:
+```
+docker compose up --build
+```
+You should see something like this in your terminal:
+
+![](https://i.imgur.com/RfAhdoi.png)
+
+Now, you can access to the static web server at localhost and dynamic web server at localhost/api
+
+For the moment, the static and dynamic servers are replicated 3 times. You can change this number directly in docker-compose.yml under the section 'replica'.
