@@ -142,4 +142,61 @@ You should see something like this in your terminal:
 
 ![](https://i.imgur.com/RfAhdoi.png)
 
-For the moment, the static and dynamic servers are replicated 3 times. You can change this number directly in docker-compose.yml under the section 'replica'.
+For the moment, the static server is replicated 3 times and uses sticky sessions while the dynamic server is replicated 2 times and works on a Round Robin method for Load Balancing. You can change the number of servers directly in docker-compose.yml under the section 'replica' of each server.
+
+## Docker Management GUI
+
+Managing all those docker containers and images can be complicated and generate a lot of problems.
+
+Instead of manually launching all those servers using docker and docker compose commands, it can be easier to use a GUI which will help you with whatever problem you might have. You can launch a GUI using the following command :
+```
+docker run -d -p 8000:8000 -p *port*:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest -p 9000:9000
+```
+
+This will launch a docker container for the GUI which can be accessed on https://localhost:*port*.
+
+In case you need to shutdown this container, you can run the following commands to stop and delete it :
+```
+docker stop /portainer
+docker rm /portainer
+```
+
+### How to use the GUI
+
+Access your GUI on https://localhost:*port*
+
+There you will have to login, or if it's your first time, create an account to login to the service.
+
+This service can only be accessed on your machine so you don't need to worry too much about what you choose for this account.
+
+There on your home page, you'll see your accessible docker environments :
+
+![](https://i.imgur.com/OTdE80t.png)
+
+You can click on your wanted environment, generally "local" is what we want, to manipulate your environment.
+
+### How to build an image
+
+To build an image, you can select the "Images" button and then press on "Build a new image" on the right.
+
+Then you just to select a name for your image and paste your Dockerfile content or upload it.
+
+You can also just build images on your command prompt locally which could be easier
+
+### How to run one simple server
+
+To run one of the servers (static or dynamic), you can click on the "Containers" button which display a list of the currently running containers and you can press the "Add container" button on the top right.
+
+You can then click on "Advanced Mode" to use local images and deploy your container. Name is optional.
+
+**If you made modifications to your container files, don't forget to rebuild your image before running the container!**
+
+### How to run a Docker compose
+
+To run a docker compose on the GUI, we need to click on the "Stacks" button where we can add a Stack which will be our Docker compose.
+
+You can then press "Add stack" on the top right and either paste the content or upload your compose.yml.
+
+Once it's done you can run and manage your compose as well as edit it live, you can dynamically add or remove server instances.
+
+**If you made modifications, be sure that your images have been rebuilt where needed!**
