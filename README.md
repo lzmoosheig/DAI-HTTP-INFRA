@@ -6,26 +6,6 @@ HTTP Infrastructure course project
 
 - Have docker installed (https://docs.docker.com/get-docker/)
 
-## Running both servers
-
-### Docker compose
-
-You can directly run both servers (static/dynamic) by using Docker compose.
-
-### Prerequisite
-
-- Install Docker compose following this tutorial: https://docs.docker.com/compose/install/
-
-### Run servers
-Open a terminal and run the following commands :
-```
-cd *Your-folder-location*/docker-images/composetest
-sudo docker compose up
-```
-
-Now both servers will be running !
-
-
 ## Static Apache HTTP Server
 
 ### Running the server
@@ -107,10 +87,11 @@ You can test the application with following commands which connects you to the a
 ```
 telnet localhost *port*
 GET / HTTP/1.0
-
 ```
 
 Be sure to press \<enter\> one more time after the *GET / HTTP/1.0* to send the request.
+
+You can also access it on navigator via localhost:*port*
 
 ### How to modify the application
 
@@ -123,21 +104,35 @@ You can modify :
 
 You can add packages using *npm*.
 
-### Traefik & Docker Compose
+## Running both servers
+
+### Docker compose
+
+You can directly run both servers (static and dynamic) by using Docker compose.
 
 ### Prerequisite
 
-Firstly, you'll need Docker Compose: https://docs.docker.com/compose/install/
+- Install Docker compose following this tutorial: https://docs.docker.com/compose/install/
 
-	- To install on Linux: https://docs.docker.com/compose/install/linux/#install-the-plugin-manually
+### Run servers
+Open a terminal and run the following commands :
+```
+cd *Your-folder-location*/docker-images/compose
+docker compose up --build -d
+```
 
-If you need to modify the docker-compose.yml file:
-https://docs.docker.com/compose/features-uses/
+Now both servers should be running and can be accessed via :
+- localhost (for the static server)
+- localhost/api (for the dynamic server)
 
-### Docker compose
-Everything is included in the 'compose' folder.
+You can then shut down your servers using :
+```
+docker compose down
+```
 
-You only need to run this following command:
+### Debugging your compose
+
+If you want to know what's going on while your server are running, you simply need to remove -d when launching your compose :
 ```
 docker compose up --build
 ```
@@ -145,10 +140,7 @@ You should see something like this in your terminal:
 
 ![](https://i.imgur.com/RfAhdoi.png)
 
-Now, you can access to the static web server at localhost and dynamic web server at localhost/api
-
 For the moment, the static and dynamic servers are replicated 3 times. You can change this number directly in docker-compose.yml under the section 'replica'.
-
 
 ## Ajax request
 
