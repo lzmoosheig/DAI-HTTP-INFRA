@@ -1,2 +1,2 @@
 #/bin/bash
-docker run -p *port*:7777 dai/express_passwords
+docker run -p 7777:7777 dai/express_passwords
