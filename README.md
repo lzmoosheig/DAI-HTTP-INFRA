@@ -181,6 +181,9 @@ You can also choose the number of instances by running the following command (in
 docker compose up --scale dynamic=2 --scale static=2
 ```
 
+### Configuration
+All the configuration is located in docker-compose.yml file. We have defined 3 services static, dynamic and Traefik. Feel free to modify this file if you need to, check the official Traefik documentation: https://doc.traefik.io/traefik/
+
 ## Docker Management GUI
 
 Managing all those docker containers and images can be complicated and generate a lot of problems.
