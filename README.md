@@ -16,18 +16,16 @@ These scripts are made to build and run the static and dynamic servers. They're 
 
 If you use Docker Desktop, you simply need to open the build-image script first and then the run-container script.
 
-For WSL, go to directory where the script are located and use the following command:
+For any other implementation, simply go to directory where the script are located and use the following command:
 ```
 sh build-image.sh
 sh run-container.sh
 ```
 Note: you may need root permissions to run these commands.
 
-### Running the servers
+## Static Apache Server
 
-You don't need to follow this section(Running the servers) if you're using our scripts!
-
-Open a terminal and run the following commands :
+Open a terminal and run the following commands or use the build and run scripts :
 ```
 cd *Your-folder-location*/docker-images/apache-php-image
 docker build -t dai/apache_php .
@@ -91,7 +89,7 @@ Those commands are used to install the packages you need to run the current inde
 
 You don't need to follow this section(Running the servers) if you're using our scripts!
 
-Open a terminal and run the following commands :
+Open a terminal and run the following commands or use the build and run scripts :
 ```
 cd *Your-folder-location*/docker-images/express-image
 docker build -t dai/express_passwords .
