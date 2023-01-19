@@ -106,9 +106,7 @@ GET / HTTP/1.0
 
 Be sure to press \<enter\> one more time after the *GET / HTTP/1.0* to send the request.
 
-You can also access it on navigator via localhost:*port* where you'll see this :
-
-![](https://i.imgur.com/PU5Owsg.png)
+You can also access it on navigator via localhost:*port*.
 
 ### How to modify the application
 
