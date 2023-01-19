@@ -8,6 +8,15 @@ HTTP Infrastructure course project
 
 ## Static Apache HTTP Server
 
+All the configuration of this static website is located in DAI-HTTP-INFRA/docker-images/apache-php-image folder and contains the following items:
+
+- Dockerfile file which contains the instructions to build our container
+- content folder containing the source files of the static website
+- build-image.sh file which is the script to build the Docker image
+- run-container.sh file which is the script to launch the Docker container.
+
+The different files and folders are presented more specifically below.
+
 #### Scripts
 
 We have made two scripts named "build-image.sh" and "run-container.sh" to make the process easier.
@@ -67,7 +76,7 @@ Learn more here : [Apache Documentation](https://httpd.apache.org/docs/)
 
 Currently, the following template is used : [template](https://startbootstrap.com/template/full-width-pics)
 
-Everything is located in *docker-images\content*, you just need to replace or change files in there to modifiy your web page.
+Everything is located in *docker-images\content*, you just need to replace or change files in there to modify your web page.
 
 ## Dynamic Express.js Server
 
