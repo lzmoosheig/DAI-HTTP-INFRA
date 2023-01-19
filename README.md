@@ -6,9 +6,7 @@ HTTP Infrastructure course project
 
 - Have docker installed (https://docs.docker.com/get-docker/)
 
-## Static Apache HTTP Server
-
-#### Scripts
+## Scripts
 
 We have made two scripts named "build-image.sh" and "run-container.sh" to make the process easier.
 
