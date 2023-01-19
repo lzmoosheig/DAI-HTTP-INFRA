@@ -144,6 +144,10 @@ You can directly run both servers (static and dynamic) by using Docker compose.
 
 - Install Docker compose following this tutorial: https://docs.docker.com/compose/install/
 
+### Traefik
+We use Traefik as a reverse proxy to access the 2 servers via the same address, it also allow us to make load balancing between servers and handle sticky sessions.
+More informations on: https://doc.traefik.io/traefik/
+
 ### Run servers
 Open a terminal and run the following commands :
 ```
@@ -171,6 +175,11 @@ You should see something like this in your terminal:
 ![](https://i.imgur.com/RfAhdoi.png)
 
 For the moment, the static server is replicated 3 times and uses sticky sessions while the dynamic server is replicated 2 times and works on a Round Robin method for Load Balancing. You can change the number of servers directly in docker-compose.yml under the section 'replica' of each server.
+
+You can also choose the number of instances by running the following command:
+```
+docker compose up --scale dynamic=2 --scale static=2
+```
 
 ## Docker Management GUI
 
