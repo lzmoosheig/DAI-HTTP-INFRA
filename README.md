@@ -174,7 +174,7 @@ You should see something like this in your terminal:
 
 For the moment, the static server is replicated 3 times and uses sticky sessions while the dynamic server is replicated 2 times and works on a Round Robin method for Load Balancing. You can change the number of servers directly in docker-compose.yml under the section 'replica' of each server.
 
-You can also choose the number of instances by running the following command:
+You can also choose the number of instances by running the following command (instead of docker compose up --build):
 ```
 docker compose up --scale dynamic=2 --scale static=2
 ```
