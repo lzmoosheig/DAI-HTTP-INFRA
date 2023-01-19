@@ -196,7 +196,7 @@ Instead of manually launching all those servers using docker and docker compose 
 docker run -d -p 8000:8000 -p *port*:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest -p 9000:9000
 ```
 
-This will launch a docker container for the GUI which can be accessed on https://localhost:*port*.
+This will launch a docker container for the GUI which can be accessed on https://localhost:*port*. You absolutely need to use HTTPS.
 
 In case you need to shutdown this container, you can run the following commands to stop and delete it :
 ```
