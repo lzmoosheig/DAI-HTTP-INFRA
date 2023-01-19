@@ -6,18 +6,7 @@ HTTP Infrastructure course project
 
 - Have docker installed (https://docs.docker.com/get-docker/)
 
-## Static Apache HTTP Server
-
-All the configuration of this static website is located in DAI-HTTP-INFRA/docker-images/apache-php-image folder and contains the following items:
-
-- Dockerfile file which contains the instructions to build our container
-- content folder containing the source files of the static website
-- build-image.sh file which is the script to build the Docker image
-- run-container.sh file which is the script to launch the Docker container.
-
-The different files and folders are presented more specifically below.
-
-#### Scripts
+## Scripts
 
 We have made two scripts named "build-image.sh" and "run-container.sh" to make the process easier.
 
@@ -31,6 +20,17 @@ sh build-image.sh
 sh run-container.sh
 ```
 Note: you may need root permissions to run these commands.
+
+## Static Apache HTTP Server
+
+All the configuration of this static website is located in DAI-HTTP-INFRA/docker-images/apache-php-image folder and contains the following items:
+
+- Dockerfile file which contains the instructions to build our container
+- content folder containing the source files of the static website
+- build-image.sh file which is the script to build the Docker image
+- run-container.sh file which is the script to launch the Docker container.
+
+The different files and folders are presented more specifically below.
 
 ### Running the servers
 
@@ -119,9 +119,7 @@ GET / HTTP/1.0
 
 Be sure to press \<enter\> one more time after the *GET / HTTP/1.0* to send the request.
 
-You can also access it on navigator via localhost:*port* where you'll see this :
-
-![](https://i.imgur.com/PU5Owsg.png)
+You can also access it on navigator via localhost:*port*.
 
 ### How to modify the application
 
