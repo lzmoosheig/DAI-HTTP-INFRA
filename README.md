@@ -50,7 +50,7 @@ You should now have a running dai/apache_php container, you can check with the f
 ```
 docker ps
 ```
-
+By default, port is 9090 if you run the script.
 You can then access your page via localhost:*port* on any web client.
 
 ### Apache Configuration
