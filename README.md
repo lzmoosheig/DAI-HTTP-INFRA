@@ -6,7 +6,18 @@ HTTP Infrastructure course project
 
 - Have docker installed (https://docs.docker.com/get-docker/)
 
-## Scripts
+## Static Apache HTTP Server
+
+All the configuration of this static website is located in DAI-HTTP-INFRA/docker-images/apache-php-image folder and contains the following items:
+
+- Dockerfile file which contains the instructions to build our container
+- content folder containing the source files of the static website
+- build-image.sh file which is the script to build the Docker image
+- run-container.sh file which is the script to launch the Docker container.
+
+The different files and folders are presented more specifically below.
+
+#### Scripts
 
 We have made two scripts named "build-image.sh" and "run-container.sh" to make the process easier.
 
@@ -14,16 +25,18 @@ These scripts are made to build and run the static and dynamic servers. They're 
 
 If you use Docker Desktop, you simply need to open the build-image script first and then the run-container script.
 
-For any other implementation, simply go to directory where the script are located and use the following command:
+For WSL, go to directory where the script are located and use the following command:
 ```
 sh build-image.sh
 sh run-container.sh
 ```
 Note: you may need root permissions to run these commands.
 
-## Static Apache Server
+### Running the servers
 
-Open a terminal and run the following commands or use the build and run scripts :
+You don't need to follow this section(Running the servers) if you're using our scripts!
+
+Open a terminal and run the following commands :
 ```
 cd *Your-folder-location*/docker-images/apache-php-image
 docker build -t dai/apache_php .
@@ -63,7 +76,7 @@ Learn more here : [Apache Documentation](https://httpd.apache.org/docs/)
 
 Currently, the following template is used : [template](https://startbootstrap.com/template/full-width-pics)
 
-Everything is located in *docker-images\content*, you just need to replace or change files in there to modifiy your web page.
+Everything is located in *docker-images\content*, you just need to replace or change files in there to modify your web page.
 
 ## Dynamic Express.js Server
 
@@ -87,7 +100,7 @@ Those commands are used to install the packages you need to run the current inde
 
 You don't need to follow this section(Running the servers) if you're using our scripts!
 
-Open a terminal and run the following commands or use the build and run scripts :
+Open a terminal and run the following commands :
 ```
 cd *Your-folder-location*/docker-images/express-image
 docker build -t dai/express_passwords .
@@ -106,7 +119,9 @@ GET / HTTP/1.0
 
 Be sure to press \<enter\> one more time after the *GET / HTTP/1.0* to send the request.
 
-You can also access it on navigator via localhost:*port*.
+You can also access it on navigator via localhost:*port* where you'll see this :
+
+![](https://i.imgur.com/PU5Owsg.png)
 
 ### How to modify the application
 
@@ -128,6 +143,10 @@ You can directly run both servers (static and dynamic) by using Docker compose.
 ### Prerequisite
 
 - Install Docker compose following this tutorial: https://docs.docker.com/compose/install/
+
+### Traefik
+We use Traefik as a reverse proxy to access the 2 servers via the same address, it also allow us to make load balancing between servers and handle sticky sessions.
+More informations on: https://doc.traefik.io/traefik/
 
 ### Run servers
 Open a terminal and run the following commands :
@@ -156,6 +175,11 @@ You should see something like this in your terminal:
 ![](https://i.imgur.com/RfAhdoi.png)
 
 For the moment, the static server is replicated 3 times and uses sticky sessions while the dynamic server is replicated 2 times and works on a Round Robin method for Load Balancing. You can change the number of servers directly in docker-compose.yml under the section 'replica' of each server.
+
+You can also choose the number of instances by running the following command:
+```
+docker compose up --scale dynamic=2 --scale static=2
+```
 
 ## Docker Management GUI
 
