@@ -14,7 +14,7 @@ These scripts are made to build and run the static and dynamic servers. They're 
 
 If you use Docker Desktop, you simply need to open the build-image script first and then the run-container script.
 
-For WSL, go to directory where the script are located and use the following command:
+For any other implementation, go to the directory where the scripts are located and use the following command:
 ```
 sh build-image.sh
 sh run-container.sh
