@@ -148,6 +148,8 @@ You can directly run both servers (static and dynamic) by using Docker compose.
 We use Traefik as a reverse proxy to access the 2 servers via the same address, it also allow us to make load balancing between servers and handle sticky sessions.
 More informations on: https://doc.traefik.io/traefik/
 
+You can access the Traefik dashboard via localhost:8181, you can modify the docker-compose.yml under Traefik->ports and put *port*:8080 if you want to access via another port.
+
 ### Run servers
 Open a terminal and run the following commands :
 ```
