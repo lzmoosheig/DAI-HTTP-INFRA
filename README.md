@@ -100,6 +100,8 @@ Those commands are used to install the packages you need to run the current inde
 
 You don't need to follow this section(Running the servers) if you're using our scripts!
 
+If you run the script, the port used by default is 7777.
+
 Open a terminal and run the following commands :
 ```
 cd *Your-folder-location*/docker-images/express-image
